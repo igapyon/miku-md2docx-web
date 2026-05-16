@@ -26,10 +26,17 @@ Decisions adopted from the same-layer references:
 Current runtime input:
 
 - `vendor/miku-md2docx-runtime.mjs`
-- Source: `../miku-md2docx/src/js/core.js`
-- Runtime version: `0.5.0`
+- Source: `../miku-md2docx/dist/core.js`
+- Runtime version: `0.8.0`
 - SHA-256:
   `8e63365a51bbe8766529f09496127fd124733680b582feba81e1ec5444f75c30`
+
+Release asset note:
+
+- The upstream `v0.5.0.2` release publishes
+  `miku-md2docx-0.5.0.2.mjs`, but that asset is the CLI bundle and invokes the
+  CLI entrypoint. It is not used directly as this Web repository's vendored
+  browser runtime.
 
 Checkpoint status:
 

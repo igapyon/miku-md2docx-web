@@ -27,11 +27,13 @@ To refresh the vendored runtime from a local upstream checkout:
 npm run refresh:runtime
 ```
 
-By default this reads `../miku-md2docx/src/js/core.js`. Set
+By default this reads `../miku-md2docx/dist/core.js`. Set
 `MD2DOCX_UPSTREAM_DIR=/path/to/miku-md2docx` to use a different checkout. Run
-`npm run build` in the upstream checkout first when `src/js/core.js` is stale
-or missing. The refresh command records the upstream version and SHA-256 digest
-in `vendor/miku-md2docx-runtime.json`.
+`npm run build` in the upstream checkout first when `dist/core.js` is stale or
+missing. Set `MD2DOCX_RUNTIME_PATH=<path-from-upstream-root>` only when the
+main application changes its current runtime artifact path. The refresh command
+records the upstream version and SHA-256 digest in
+`vendor/miku-md2docx-runtime.json`.
 
 ## Build
 
