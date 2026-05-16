@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>miku-md2docx</title>
+  <meta name="description" content="miku-md2docx is a local browser tool that reads Markdown files and converts supported structure into editable Word .docx files." />
+  <link rel="stylesheet" href="lht-cmn/css/components.css" />
+  <link rel="stylesheet" href="src/css/app.css" />
+  <script src="lht-cmn/vendor/material-web-outlined-text-field.bundle.js"></script>
+  <script src="lht-cmn/js/components.js" defer></script>
+</head>
+<body class="md-page">
+  <main class="md-shell">
+    <section class="md-panel md-stack-md">
+      <lht-page-hero
+        title="miku-md2docx"
+        subtitle="Convert local Markdown into an editable DOCX document."
+        icon="MD"
+        help-label="About miku-md2docx"
+        help-wide
+        menu-home-href="./index.html"
+        menu-home-label="Back to Home">
+        Load a local Markdown file, optionally add local image assets, review the conversion summary, and download a Word document.
+      </lht-page-hero>
+
+      <section class="md-section md-stack-md">
+        <h2 class="md-section-title">Input</h2>
+        <div class="md-grid md-grid--two">
+          <div class="md-panel md-stack-md">
+            <lht-file-select
+              id="markdownFileSelect"
+              input-id="markdownFileInput"
+              button-id="markdownFileSelectBtn"
+              file-name-id="markdownFileName"
+              accept=".md,.markdown,text/markdown,text/plain"
+              button-label="Select Markdown File"
+              placeholder="No file selected"
+              show-file-name>
+            </lht-file-select>
+
+            <label class="md-field">
+              <span class="md-field__label">Image assets</span>
+              <input id="imageAssetInput" class="md-field__input" type="file" accept="image/png,image/jpeg,image/gif,image/webp" multiple />
+            </label>
+
+            <div class="md-actions">
+              <button id="convertBtn" class="md-button md-button--accent" type="button" disabled>Convert to DOCX</button>
+              <button id="downloadBtn" class="md-button" type="button" disabled>Save DOCX</button>
+              <button id="clearBtn" class="md-button" type="button">Clear</button>
+            </div>
+
+            <div id="statusText" class="md-status-box">Loading UI ...</div>
+            <div class="md-caption">Processing stays local in your browser. No data is sent to a server.</div>
+          </div>
+
+          <div class="md-panel md-stack-sm">
+            <h2 class="md-section-title">Summary</h2>
+            <lht-preview-output id="summaryPreview" preview-id="summaryOutput" preview-tag="pre" placeholder="No conversion yet."></lht-preview-output>
+          </div>
+        </div>
+      </section>
+
+      <lht-loading-overlay id="loadingOverlay" text="Converting Markdown"></lht-loading-overlay>
+      <lht-error-alert id="errorAlert"></lht-error-alert>
+      <lht-toast id="toast"></lht-toast>
+    </section>
+  </main>
+
+  <script src="src/js/miku-md2docx-runtime.js"></script>
+  <script src="src/js/main.js"></script>
+</body>
+</html>
