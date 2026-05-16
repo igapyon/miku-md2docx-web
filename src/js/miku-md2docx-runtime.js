@@ -1,3 +1,4 @@
+(() => {
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -12953,3 +12954,4 @@ function convertMarkdownToDocx(markdown, options = {}) {
 }
 
 globalThis.__mikuMd2docxRuntime = { convertMarkdownToDocx, formatSummary };
+})();

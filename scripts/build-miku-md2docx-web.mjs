@@ -71,12 +71,12 @@ function prepareBrowserRuntime() {
     throw new Error("Vendored runtime does not expose the expected miku-md2docx browser exports.");
   }
 
-  const browserSource = "\"use strict\";\n" + runtimeSource
+  const browserSource = "(() => {\n\"use strict\";\n" + runtimeSource
     .replace(/import \{ default as default2 \} from "node:path";\n/, browserPathPolyfill())
     .replace(/import \{ default as default3 \} from "node:process";\n/, "var default3 = { cwd: () => \"\" };\n")
     .replace(/import \{ fileURLToPath \} from "node:url";\n/, "function fileURLToPath(url) { return String(url && url.pathname ? url.pathname : url); }\n")
     .replace(exportPattern, "")
-    + "\n\nglobalThis.__mikuMd2docxRuntime = { convertMarkdownToDocx, formatSummary };\n";
+    + "\n\nglobalThis.__mikuMd2docxRuntime = { convertMarkdownToDocx, formatSummary };\n})();\n";
   fs.mkdirSync(path.dirname(RUNTIME_BROWSER_PATH), { recursive: true });
   fs.writeFileSync(RUNTIME_BROWSER_PATH, browserSource, "utf8");
 }
