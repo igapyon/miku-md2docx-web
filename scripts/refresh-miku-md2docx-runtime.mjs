@@ -5,7 +5,7 @@ import path from "node:path";
 const ROOT = process.cwd();
 const upstreamDir = path.resolve(ROOT, process.env.MD2DOCX_UPSTREAM_DIR || "../miku-md2docx");
 const upstreamPackagePath = path.resolve(upstreamDir, "package.json");
-const upstreamRuntimePath = path.resolve(upstreamDir, "src", "js", "core.js");
+const upstreamRuntimePath = path.resolve(upstreamDir, process.env.MD2DOCX_RUNTIME_PATH || "dist/core.js");
 const vendorRuntimePath = path.resolve(ROOT, "vendor", "miku-md2docx-runtime.mjs");
 const vendorMetadataPath = path.resolve(ROOT, "vendor", "miku-md2docx-runtime.json");
 
@@ -15,8 +15,9 @@ if (!fs.existsSync(upstreamPackagePath)) {
 
 if (!fs.existsSync(upstreamRuntimePath)) {
   throw new Error(
-    `Upstream browser core not found: ${upstreamRuntimePath}\n`
-    + "Run `npm run build` in the upstream miku-md2docx checkout first."
+    `Upstream runtime not found: ${upstreamRuntimePath}\n`
+    + "Run `npm run build` in the upstream miku-md2docx checkout first, "
+    + "or set MD2DOCX_RUNTIME_PATH to the current runtime artifact path."
   );
 }
 
@@ -32,7 +33,7 @@ fs.writeFileSync(
     runtimeVersion: upstreamPackage.version,
     sourceRepository: "https://github.com/igapyon/miku-md2docx",
     sourcePath: path.relative(ROOT, upstreamRuntimePath),
-    sourceRole: "browser-compatible bundled core from the local upstream main application checkout",
+    sourceRole: "current bundled core runtime from the local upstream main application checkout",
     sha256: digest,
     refreshedAt: new Date().toISOString()
   }, null, 2) + "\n",
