@@ -1,0 +1,20 @@
+{
+  "name": "miku-md2docx-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "refresh:runtime": "node scripts/refresh-miku-md2docx-runtime.mjs",
+    "build": "node scripts/build-miku-md2docx-web.mjs",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "build:all": "npm run build && npm run test:unit",
+    "stage:web-release": "node scripts/stage-web-release-assets.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.7",
+    "jsdom": "^26.0.0",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.0"
+  }
+}

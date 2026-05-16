@@ -1,0 +1,8 @@
+{
+  "runtimeVersion": "0.5.0",
+  "sourceRepository": "https://github.com/igapyon/miku-md2docx",
+  "sourcePath": "../miku-md2docx/src/js/core.js",
+  "sourceRole": "browser-compatible bundled core from the local upstream main application checkout",
+  "sha256": "8e63365a51bbe8766529f09496127fd124733680b582feba81e1ec5444f75c30",
+  "refreshedAt": "2026-05-16T22:32:14.912Z"
+}
